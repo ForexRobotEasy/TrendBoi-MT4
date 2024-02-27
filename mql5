@@ -1,0 +1,104 @@
+
+//+------------------------------------------------------------------+
+//|                                           TrendBoi MT4           |
+//|                                             Developer's Site: forexroboteasy.com |
+//|                                             Development: Forex Robot Easy Team |
+//+------------------------------------------------------------------+
+#property copyright 'Forex Robot Easy Team'
+#property link      'forexroboteasy.com'
+#property version   '1.00'
+#property strict
+
+//+------------------------------------------------------------------+
+//| Global variables                                                  |
+//+------------------------------------------------------------------+
+double LotSize = 0.1; // Initial lot size
+int Slippage = 3; // Slippage value in pips
+int StopLoss = 50; // Stop loss value in pips
+int TakeProfit = 100; // Take profit value in pips
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Set initial settings
+    SetLotSize(LotSize);
+    SetSlippage(Slippage);
+    SetStopLoss(StopLoss);
+    SetTakeProfit(TakeProfit);
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform any necessary cleanup activities here
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Get the current market direction
+    int direction = GetMarketDirection();
+
+    // Check if it's a new trading day
+    if (IsNewTradingDay())
+    {
+        // Place a trade based on the market direction
+        if (direction == DIRECTION_BUY)
+            Buy(LotSize);
+        else if (direction == DIRECTION_SELL)
+            Sell(LotSize);
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Custom functions                                                  |
+//+------------------------------------------------------------------+
+int GetMarketDirection()
+{
+    // Implement your unique approach to determine the market direction here
+    // Return DIRECTION_BUY for buy trade and DIRECTION_SELL for sell trade
+    return DIRECTION_BUY;
+}
+
+bool IsNewTradingDay()
+{
+    // Implement the logic to check if it's a new trading day here
+    return true;
+}
+
+void SetLotSize(double lotSize)
+{
+    // Implement the logic to set the lot size here
+}
+
+void SetSlippage(int slippage)
+{
+    // Implement the logic to set the slippage value here
+}
+
+void SetStopLoss(int stopLoss)
+{
+    // Implement the logic to set the stop loss value here
+}
+
+void SetTakeProfit(int takeProfit)
+{
+    // Implement the logic to set the take profit value here
+}
+
+void Buy(double lotSize)
+{
+    // Implement the logic to place a buy trade here
+}
+
+void Sell(double lotSize)
+{
+    // Implement the logic to place a sell trade here
+}
